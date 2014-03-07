@@ -9,7 +9,10 @@ public class WeatherAlert {
 
 	public static void main(String [] args) {
 		
-		WeatherAlertRetriever weather = new WeatherAlertRetriever("22180");
+		final String zip = new String(args[0]);
+		if (zip.length() != 5) throw new IllegalArgumentException("Invalid Zip Code provided: " + zip);
+		
+		WeatherAlertRetriever weather = new WeatherAlertRetriever(zip);
 		JSONObject jObj = weather.getJSONWeather();
 		HashMap<String,String> conditions = weather.formatJSONWeather(jObj);
 		
