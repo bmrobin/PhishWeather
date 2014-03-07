@@ -70,10 +70,10 @@ public class WeatherAlertRetriever {
 			String weather = obj.getString("weather");
 			String feelsLikeFarenheit = obj.getString("feelslike_f");
 			
-			weatherInfo.put("temp", farenheit);
-			weatherInfo.put("time", timestamp);
-			weatherInfo.put("weather", weather);
-			weatherInfo.put("feelslike", feelsLikeFarenheit);
+			weatherInfo.put("Current Temp (F)", farenheit);
+			weatherInfo.put("Time", timestamp);
+			weatherInfo.put("Conditions", weather);
+			weatherInfo.put("Feels Like (F)", feelsLikeFarenheit);
 			
 		} catch (JSONException e) {
 			e.printStackTrace();
