@@ -14,13 +14,8 @@ public class WeatherAlert {
 		
 		WeatherAlertRetriever weather = new WeatherAlertRetriever(zip);
 		JSONObject jObj = weather.getJSONWeather();
-		HashMap<String,String> conditions = weather.formatJSONWeather(jObj);
+		weather.storeJSONWeather(jObj);
+		System.out.println(weather.toString());	
 		
-		System.out.println("");
-		System.out.println("----------");
-		for (Map.Entry<String,String> entry : conditions.entrySet()) {
-			System.out.println(entry.getKey() + ": " + entry.getValue());
-		}
-		System.out.println("----------");
 	}
 }
