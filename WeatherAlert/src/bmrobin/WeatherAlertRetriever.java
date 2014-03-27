@@ -25,7 +25,7 @@ public class WeatherAlertRetriever {
 		this.zipCode = zip;
 		this.weatherURL = weatherURL + zipCode + ".json";
 		weatherInfo = new HashMap<String, String>();
-		System.out.println("Using zip code: " + this.zipCode);
+//		System.out.println("Using zip code: " + this.zipCode);
 	}
 	
 	public JSONObject getJSONWeather() {
@@ -36,7 +36,7 @@ public class WeatherAlertRetriever {
 		
 		try {
 			// request JSON of current conditions from api
-			System.out.println("Getting weather from api: " + this.weatherURL);
+//			System.out.println("Getting weather from api: " + this.weatherURL);
 			URL addr = new URL(this.weatherURL);
 			Scanner scan = new Scanner(addr.openStream());
 			String str = new String();
@@ -66,14 +66,16 @@ public class WeatherAlertRetriever {
 	
 	public void storeJSONWeather(JSONObject obj) {
 		try {
+			// location is nested inside another JSON array
+			JSONObject locationObj = obj.getJSONObject("display_location");
+			String location = locationObj.getString("full");
 			
 			String farenheit = obj.getString("temp_f");
 			String timestamp = obj.getString("observation_time");
 			String weather = obj.getString("weather");
 			String feelsLikeFarenheit = obj.getString("feelslike_f");
-			//String location = obj.getString("full");
 			
-			//weatherInfo.put("Location", location);
+			this.weatherInfo.put("Location", location);
 			this.weatherInfo.put("Current Temp (F)", farenheit);
 			this.weatherInfo.put("Time", timestamp);
 			this.weatherInfo.put("Conditions", weather);
