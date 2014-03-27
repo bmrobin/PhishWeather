@@ -2,9 +2,6 @@ package bmrobin;
 
 import org.json.JSONObject;
 
-import java.util.HashMap;
-import java.util.Map;
-
 public class WeatherAlert {
 
 	public static void main(String [] args) {
