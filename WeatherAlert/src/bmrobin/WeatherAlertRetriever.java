@@ -88,12 +88,11 @@ public class WeatherAlertRetriever {
 	
 	public String toString() {
 		StringBuilder str = new StringBuilder();
-		str.append("\n");
 		str.append("----------\n");
 		for (Map.Entry<String,String> entry : this.weatherInfo.entrySet()) {
 			str.append(entry.getKey() + ": " + entry.getValue() + "\n");
 		}
-		str.append("----------\n");
+		str.append("----------");
 		return str.toString();
 	}
 }
