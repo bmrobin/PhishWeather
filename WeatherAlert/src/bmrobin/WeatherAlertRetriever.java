@@ -45,8 +45,9 @@ public class WeatherAlertRetriever {
 			}
 			scan.close();
 			tempObj = new JSONObject(str);
-		}
-		catch (Exception e) {
+		} catch (JSONException j) {
+			j.printStackTrace();
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		
