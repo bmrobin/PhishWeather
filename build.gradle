@@ -1,12 +1,70 @@
+repositories {
+	mavenCentral()
+}
+
+buildscript {
+	repositories {
+		mavenCentral()
+	}
+	dependencies {
+		classpath("org.springframework.boot:spring-boot-gradle-plugin:1.4.0.RELEASE")
+		classpath("se.transmode.gradle:gradle-docker:1.2")
+	}
+}
+
 apply plugin: 'java'
-apply plugin: 'idea'
-sourceCompatibility = 1.7
-version = '1.0'
+apply plugin: 'spring-boot'
+apply plugin: 'war'
+apply plugin: se.transmode.gradle.plugins.docker.DockerPlugin
+
+
+war {
+	baseName = 'app'
+	version = '1.0'
+}
 
 repositories {
 	mavenCentral()
 }
 
 dependencies {
+	compile group: 'org.springframework.boot', name: 'spring-boot-starter-web'
+	compile group: 'org.springframework.boot', name: 'spring-boot-starter-thymeleaf'
+	compile group: 'com.h2database', name:'h2', version: '1.3.173'
 	compile group: 'org.json', name: 'json', version: '20160212'
+
+	providedRuntime("org.springframework.boot:spring-boot-starter-tomcat")
+
+	testCompile "org.springframework.boot:spring-boot-starter-test"
 }
+
+bootRun {
+	addResources = false
+	if (rootProject.hasProperty('debug')) {
+		jvmArgs += ['-Xdebug', '-Xrunjdwp:server=y,transport=dt_socket,address=8000,suspend=n']
+	}
+}
+
+task docker(type: Docker) {
+	dependsOn bootRepackage
+
+	baseImage = 'biorad/oracle-java-8'
+	tag = 'bmrobin/phish-weather-api'
+	tagVersion = 'latest'
+
+	addFile project.war.archivePath, '/data/app.war'
+	exposePort 8080
+	defaultCommand = [ '/usr/bin/java', '-jar', '/data/app.war' ]
+}
+
+task bower(type: Exec) {
+	commandLine 'bower', '--allow-root', 'install'
+}
+
+task npmInstall(type: Exec) {
+	commandLine 'npm', 'install'
+}
+
+processResources.dependsOn 'npmInstall'
+bower.dependsOn 'npmInstall'
+

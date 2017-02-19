@@ -1,0 +1,14 @@
+version: '2'
+services:
+  api:
+    image: bmrobin/phish-weather-api
+    container_name: api
+    environment:
+      - SPRING_PROFILES_ACTIVE=test
+    ports:
+      - 8080:8080
+    networks:
+      - local
+networks:
+  local:
+    external: true
