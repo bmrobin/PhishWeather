@@ -114,7 +114,7 @@ module.exports = function (grunt) {
           cwd: 'src/main/webapp',
           dest: '<%= dist %>',
           src: [
-            '*.html',
+            'index.html',
             'scripts/**/*.html',
             'assets/images/**/*.{png,gif,webp,jpg,jpeg,svg}',
             'assets/styles/**/*.css'
@@ -126,74 +126,6 @@ module.exports = function (grunt) {
           src: [
             'generated/*'
           ]
-        }]
-      }
-    },
-
-    // Minify JS and CSS resources
-    useminPrepare: {
-      html: 'src/main/webapp/**/*.html',
-      options: {
-        dest: '<%= dist %>',
-        flow: {
-          html: {
-            steps: {
-              js: [ 'concat', 'uglify' ],
-              css: [ 'cssmin', useminAutoprefixer ]
-            },
-            post: {}
-          }
-        }
-      }
-    },
-
-    // Generate a hash specific to the file(s) and inject that into all references
-    filerev: {
-      options: {
-        algorithm: 'md5',
-        length: 16
-      },
-      css: {
-        src: '<%= dist %>/assets/styles/**/*.css'
-      },
-      js: {
-        src: '<%= dist %>/scripts/**/*.js'
-      }
-    },
-
-    // Inject minified resource references into HTML
-    usemin: {
-      html: ['<%= dist %>/**/*.html'],
-      css: ['<%= dist %>/assets/styles/**/*.css'],
-      js: ['<%= dist %>/scripts/**/*.js'],
-      options: {
-        assetsDirs: ['<%= dist %>', '<%= dist %>/assets/styles', '<%= dist %>/assets/fonts'],
-        patterns: {
-          js: [
-          ]
-        },
-        dirs: ['<%= dist %>']
-      }
-    },
-
-    htmlmin: {
-      dist: {
-        options: {
-          removeCommentsFromCDATA: true,
-          collapseWhitespace: true,
-          collapseBooleanAttributes: true,
-          conservativeCollapse: true,
-          removeAttributeQuotes: true,
-          removeRedundantAttributes: true,
-          useShortDoctype: true,
-          removeEmptyAttributes: true,
-          keepClosingSlash: true
-        },
-        files: [{
-          expand: true,
-          cwd: '<%= dist %>',
-          src: ['*.html'],
-          dest: '<%= dist %>'
         }]
       }
     },
@@ -246,25 +178,6 @@ module.exports = function (grunt) {
         ]
       },
       exclude: [ 'src/test/javascript/spec/e2e/*' ]
-    },
-
-    browserSync: {
-      dev: {
-        bsFiles: {
-          src : [
-            'src/main/webapp/**/*.html',
-            'src/main/webapp/**/*.json',
-            '{.tmp/,}src/main/webapp/assets/styles/**/*.css',
-            '{.tmp/,}src/main/webapp/scripts/**/*.js',
-            'src/main/webapp/assets/images/**/*.{png,jpg,jpeg,gif,webp,svg}'
-          ]
-        }
-      },
-      options: {
-        watchTask: true,
-        proxy: "localhost:8080",
-        open: false
-      }
     }
 
   });
@@ -295,9 +208,10 @@ module.exports = function (grunt) {
   // Host application in dev mode
   grunt.registerTask('default', [
     'clean',
-    'wiredep:app',
+    'typescript',
+    'wiredep',
     'injector',
-    'typescript'
+    'copy'
   ]);
 
 };
