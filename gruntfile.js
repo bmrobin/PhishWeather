@@ -1,11 +1,6 @@
 /*global module:false,require:false*/
 'use strict';
 
-var useminAutoprefixer = {
-  name: 'autoprefixer',
-  createConfig: require('grunt-usemin/lib/config/cssmin').createConfig // Reuse cssmins createConfig
-};
-
 module.exports = function (grunt) {
 
   // automatically loads all of our grunt tasks
@@ -19,13 +14,14 @@ module.exports = function (grunt) {
 
     dist: 'src/main/webapp/dist',
 
+    // Compile TS into JS
     typescript: {
       base: {
         src: ['src/main/webapp/scripts/**/*.ts'],
         dest: 'src/main/webapp/dist',
         options: {
-          module: 'amd', //or commonjs 
-          target: 'es5', //or es3
+          module: 'amd',
+          target: 'es5',
           sourceMap: true,
           declaration: true
         }
@@ -60,7 +56,7 @@ module.exports = function (grunt) {
       }
     },
 
-    // Inject dependencies
+    // Inject JS dependencies
     injector: {
       options: {
         addRootSlash: false,
@@ -70,7 +66,7 @@ module.exports = function (grunt) {
       app: {
         files: {
           'src/main/webapp/index.html': [
-            'src/main/webapp/scripts/**/*.js',
+            'src/main/webapp/dist/**/*.js',
             'src/main/webapp/assets/*.css'
           ],
         }
@@ -80,7 +76,7 @@ module.exports = function (grunt) {
     // Inject Bower Dependencies
     wiredep: {
       app: {
-        src: ['src/main/webapp/dist/index.html'],
+        src: ['src/main/webapp/index.html'],
         directory: 'src/main/webapp/bower_components',
         exclude: [
           /bootstrap-sass-only/
@@ -113,7 +109,6 @@ module.exports = function (grunt) {
           cwd: 'src/main/webapp',
           dest: '<%= dist %>',
           src: [
-            'index.html',
             'scripts/**/*.html',
             'assets/images/**/*.{png,gif,webp,jpg,jpeg,svg}',
             'assets/styles/**/*.css'
@@ -181,34 +176,16 @@ module.exports = function (grunt) {
 
   });
 
-  // Unit tests
   grunt.registerTask('test', [
-    'clean:server',
+    'clean',
     'wiredep:test',
     'karma:unit',
     'jshint:test'
   ]);
 
-  // grunt.registerTask('build', [
-  //   'clean:dist',
-  //   'wiredep:app',
-  //   "typescript",
-  //   'useminPrepare',
-  //   'copy:dist',
-  //   'cssmin:generated',
-  //   'autoprefixer',
-  //   'concat:generated',
-  //   'uglify:generated',
-  //   'filerev',
-  //   'usemin',
-  //   'htmlmin'
-  // ]);
-
-  // Host application in dev mode
   grunt.registerTask('default', [
     'clean',
     'typescript',
-    'copy',
     'wiredep',
     'injector'
   ]);
