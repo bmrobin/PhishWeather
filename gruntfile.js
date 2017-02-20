@@ -50,14 +50,15 @@ module.exports = function (grunt) {
     injector: {
       options: {
         addRootSlash: false,
+        relative: true,
         ignorePath: [ '<%= app %>/', '.tmp/' ]
       },
       app: {
         files: {
-          '<%= app %>/index.html': [
-            '<%= app %>/scripts/**/*.js',
-            '<%= app %>/assets/styles/ui.css'
-          ]
+          'src/main/webapp/index.html': [
+            'src/main/webapp/scripts/**/*.js',
+            'src/main/webapp/assets/*.css'
+          ],
         }
       }
     },
