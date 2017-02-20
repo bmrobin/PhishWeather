@@ -25,8 +25,7 @@ module.exports = function (grunt) {
         dest: 'src/main/webapp/dist',
         options: {
           module: 'amd', //or commonjs 
-          target: 'es5', //or es3 
-          basePath: 'src/main/webapp/scripts',
+          target: 'es5', //or es3
           sourceMap: true,
           declaration: true
         }
@@ -41,7 +40,6 @@ module.exports = function (grunt) {
           dot: true,
           src: [
             '.tmp',
-            'src/main/webapp/assets/styles/ui.css',
             '<%= dist %>/*',
             '!<%= dist %>/.git*'
           ]
@@ -83,6 +81,7 @@ module.exports = function (grunt) {
     wiredep: {
       app: {
         src: ['src/main/webapp/index.html'],
+        directory: 'src/main/webapp/bower_components',
         exclude: [
           /bootstrap-sass-only/
         ]
