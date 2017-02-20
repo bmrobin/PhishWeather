@@ -10,12 +10,28 @@ module.exports = function (grunt) {
 
   // automatically loads all of our grunt tasks
   require('load-grunt-tasks')(grunt);
+  
+  grunt.loadNpmTasks('grunt-typescript');
 
   grunt.initConfig({
 
     app: require('./bower.json').appPath,
 
     dist: 'src/main/webapp/dist',
+
+    typescript: {
+      base: {
+        src: ['src/main/webapp/scripts/**/*.ts'],
+        dest: 'src/main/webapp/dist',
+        options: {
+          module: 'amd', //or commonjs 
+          target: 'es5', //or es3 
+          basePath: 'src/main/webapp/scripts',
+          sourceMap: true,
+          declaration: true
+        }
+      }
+    },
 
     // Empties folders to start fresh
     clean: {
@@ -261,27 +277,27 @@ module.exports = function (grunt) {
     'jshint:test'
   ]);
 
-  grunt.registerTask('build', [
-    'clean:dist',
-    'wiredep:app',
-    'useminPrepare',
-    'copy:dist',
-    'cssmin:generated',
-    'autoprefixer',
-    'concat:generated',
-    'uglify:generated',
-    'filerev',
-    'usemin',
-    'htmlmin'
-  ]);
+  // grunt.registerTask('build', [
+  //   'clean:dist',
+  //   'wiredep:app',
+  //   "typescript",
+  //   'useminPrepare',
+  //   'copy:dist',
+  //   'cssmin:generated',
+  //   'autoprefixer',
+  //   'concat:generated',
+  //   'uglify:generated',
+  //   'filerev',
+  //   'usemin',
+  //   'htmlmin'
+  // ]);
 
   // Host application in dev mode
   grunt.registerTask('default', [
-    'clean:server',
+    'clean',
     'wiredep:app',
     'injector',
-    'browserSync',
-    'watch'
+    'typescript'
   ]);
 
 };
