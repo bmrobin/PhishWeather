@@ -80,7 +80,7 @@ module.exports = function (grunt) {
     // Inject Bower Dependencies
     wiredep: {
       app: {
-        src: ['src/main/webapp/index.html'],
+        src: ['src/main/webapp/dist/index.html'],
         directory: 'src/main/webapp/bower_components',
         exclude: [
           /bootstrap-sass-only/
@@ -208,9 +208,9 @@ module.exports = function (grunt) {
   grunt.registerTask('default', [
     'clean',
     'typescript',
+    'copy',
     'wiredep',
-    'injector',
-    'copy'
+    'injector'
   ]);
 
 };
