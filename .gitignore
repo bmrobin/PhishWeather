@@ -1,9 +1,13 @@
 /build
 /.gradle
 /.idea
+/.vscode
 *.iml
 *.ipr
 *.iws
+/.tmp
 
-/bower_components
+bower_components
 /node_modules
+dist
+coverage

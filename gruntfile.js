@@ -40,10 +40,6 @@ module.exports = function (grunt) {
         files: [ 'bower.json' ],
         tasks: [ 'wiredep' ]
       },
-      sass: {
-        files: [ 'src/main/scss/*.scss' ],
-        tasks: [ 'sass' ]
-      },
       js: {
         files: [ '<%= app %>/scripts/**/*.js' ],
         tasks: [ 'newer:jshint:all' ]
@@ -249,7 +245,7 @@ module.exports = function (grunt) {
       },
       options: {
         watchTask: true,
-        proxy: "localhost:9090",
+        proxy: "localhost:8080",
         open: false
       }
     }
@@ -267,7 +263,6 @@ module.exports = function (grunt) {
   grunt.registerTask('build', [
     'clean:dist',
     'wiredep:app',
-    'sass:dist',
     'useminPrepare',
     'copy:dist',
     'cssmin:generated',
@@ -282,7 +277,7 @@ module.exports = function (grunt) {
   // Host application in dev mode
   grunt.registerTask('default', [
     'clean:server',
-    'wiredep',
+    'wiredep:app',
     'injector',
     'browserSync',
     'watch'
