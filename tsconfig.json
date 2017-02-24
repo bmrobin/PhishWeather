@@ -1,0 +1,21 @@
+{
+  "compilerOptions": {
+    "baseUrl": "",
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "outDir": "src/main/webapp/dist",
+    "pretty": true,
+    "sourceMap": true,
+    "target": "es5",
+    "typeRoots": [
+      "node_modules/@types"
+    ]
+  },
+  "include":[
+    "src/main/webapp/**/*.ts"
+  ],
+  "exclude": [
+    "src/main/webapp/bower_components",
+    "src/main/webapp/dist"
+  ]
+}

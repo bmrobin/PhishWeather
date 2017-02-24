@@ -6,7 +6,7 @@ module.exports = function (grunt) {
   // automatically loads all of our grunt tasks
   require('load-grunt-tasks')(grunt);
   
-  grunt.loadNpmTasks('grunt-typescript');
+  grunt.loadNpmTasks('grunt-ts');
 
   grunt.initConfig({
 
@@ -15,16 +15,10 @@ module.exports = function (grunt) {
     dist: 'src/main/webapp/dist',
 
     // Compile TS into JS
-    typescript: {
-      base: {
-        src: ['src/main/webapp/scripts/**/*.ts'],
-        dest: 'src/main/webapp/dist',
-        options: {
-          module: 'amd',
-          target: 'es5',
-          sourceMap: true,
-          declaration: true
-        }
+    ts: {
+      app: {
+        // use options from our tsconfig.json 
+        tsconfig: 'tsconfig.json'
       }
     },
 
@@ -185,7 +179,7 @@ module.exports = function (grunt) {
 
   grunt.registerTask('default', [
     'clean',
-    'typescript',
+    'ts',
     'wiredep',
     'injector'
   ]);
