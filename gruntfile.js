@@ -18,8 +18,7 @@ module.exports = function (grunt) {
     ts: {
       app: {
         // use options from our tsconfig.json 
-        tsconfig: 'tsconfig.json',
-        watch: '.'
+        tsconfig: 'tsconfig.json'
       }
     },
 
@@ -45,9 +44,9 @@ module.exports = function (grunt) {
         files: [ 'bower.json' ],
         tasks: [ 'wiredep' ]
       },
-      js: {
-        files: [ '<%= app %>/scripts/**/*.js' ],
-        tasks: [ 'newer:jshint:all' ]
+      ts: {
+        files: [ '<%= app %>/scripts/**/*.ts' ],
+        tasks: [ 'ts' ]
       }
     },
 
@@ -182,7 +181,8 @@ module.exports = function (grunt) {
     'clean',
     'ts',
     'wiredep',
-    'injector'
+    'injector',
+    'watch'
   ]);
 
 };

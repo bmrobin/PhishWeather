@@ -11,5 +11,5 @@ class App {
 }
 
 $(document).ready(function() {
-    var app = new App();
+    let app = new App();
 });
