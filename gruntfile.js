@@ -18,7 +18,8 @@ module.exports = function (grunt) {
     ts: {
       app: {
         // use options from our tsconfig.json 
-        tsconfig: 'tsconfig.json'
+        tsconfig: 'tsconfig.json',
+        watch: '.'
       }
     },
 
