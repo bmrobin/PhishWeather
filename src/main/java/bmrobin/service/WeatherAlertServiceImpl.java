@@ -49,17 +49,22 @@ public class WeatherAlertServiceImpl implements WeatherAlertService {
 			JSONObject locationObj = jObj.getJSONObject("display_location");
 			String location = locationObj.getString("full");
 
-			Double fahrenheit = (Double) jObj.get("temp_f");
+			Object fahrenheit;
+			try {
+				fahrenheit = (Integer) jObj.get("temp_f");
+			} catch (ClassCastException e) {
+				fahrenheit = (Double) jObj.get("temp_f");
+			}
 			String timestamp = jObj.getString("observation_time");
 			String weather = jObj.getString("weather");
 			String feelsLikeFahrenheit = jObj.getString("feelslike_f");
 
 			Map<String, String> weatherInfo = new HashMap<>();
-			weatherInfo.put("Location", location);
-			weatherInfo.put("Current Temp (F)", fahrenheit.toString());
-			weatherInfo.put("Time", timestamp);
-			weatherInfo.put("Conditions", weather);
-			weatherInfo.put("Feels Like (F)", feelsLikeFahrenheit);
+			weatherInfo.put("location", location);
+			weatherInfo.put("currentTempFahrenheit", fahrenheit.toString());
+			weatherInfo.put("time", timestamp);
+			weatherInfo.put("conditions", weather);
+			weatherInfo.put("feelsLikeFahrenheit", feelsLikeFahrenheit);
 
 			return weatherInfo;
 		} catch (JSONException j) {
