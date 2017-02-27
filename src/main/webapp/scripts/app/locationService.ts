@@ -1,20 +1,20 @@
-import { Location } from './location';
-import { Weather } from './weather';
+import { Location } from "./location";
+import { Weather } from "./weather";
 
 export class LocationService {
 
-    getLocationData(location: string) {
+    public getLocationData(location: string) {
         let loc = new Location(location);
         $.ajax({
-            url: 'http://localhost:8080/' + loc.zipCode,
-            method: 'GET'
+            method: "GET",
+            url: "http://localhost:8080/" + loc.zipCode
         }).then(
-            function(data, textStatus, jqXHR) {
-                window.console.log('here\'s your data: ' + data);
+            (data, textStatus, jqXHR) => {
+                window.console.log("here's your data: " + data);
             },
-            function(jqXHR, textStatus, error) {
+            (jqXHR, textStatus, error) => {
                 window.console.log(error);
             }
-        )
+        );
     }
 }

@@ -1,12 +1,12 @@
 export class Weather {
 
-    currentTempFahrenheit: string;
-    feelsLikeFahrenheit: string;
-    location: string;
-    time: string;
-    conditions: string;
+    public currentTempFahrenheit: string;
+    public feelsLikeFahrenheit: string;
+    public location: string;
+    public time: string;
+    public conditions: string;
 
-    constructor(jsonData : any) {
+    constructor(jsonData: any) {
         $.extend(this, jsonData);
     }
 }

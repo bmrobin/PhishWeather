@@ -1,19 +1,19 @@
-import { LocationService } from './locationService';
+import { LocationService } from "./locationService";
 
 class App {
-    greeting : string = "learning typescript :)";
-    locationService = new LocationService();
+    private greeting: string = "learning typescript :)";
+    private locationService = new LocationService();
 
     constructor() {
         this.setGreeting(this.greeting);
-        this.locationService.getLocationData('26209');
+        this.locationService.getLocationData("26209");
     }
 
-    setGreeting(greeting : string) {
-        $('#test').text(greeting);
+    public setGreeting(greeting: string) {
+        $("#test").text(greeting);
     }
 }
 
-$(document).ready(function() {
+$(document).ready(() => {
     let app = new App();
 });
