@@ -46,7 +46,11 @@ module.exports = function (grunt) {
       },
       ts: {
         files: [ '<%= app %>/scripts/**/*.ts' ],
-        tasks: [ 'ts', 'wiredep', 'injector' ]
+        tasks: [ 'backJackDoItAgain' ]
+      },
+      tsconfig: {
+        files: [ 'tsconfig.json'],
+        tasks: [ 'backJackDoItAgain' ]
       }
     },
 
@@ -177,11 +181,15 @@ module.exports = function (grunt) {
     'jshint:test'
   ]);
 
-  grunt.registerTask('default', [
+  grunt.registerTask('backJackDoItAgain', [
     'clean',
     'ts',
     'wiredep',
-    'injector',
+    'injector'
+  ]);
+
+  grunt.registerTask('default', [
+    'backJackDoItAgain',
     'watch'
   ]);
 
