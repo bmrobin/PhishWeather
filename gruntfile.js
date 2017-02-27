@@ -46,7 +46,7 @@ module.exports = function (grunt) {
       },
       ts: {
         files: [ '<%= app %>/scripts/**/*.ts' ],
-        tasks: [ 'ts' ]
+        tasks: [ 'ts', 'wiredep', 'injector' ]
       }
     },
 
