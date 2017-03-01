@@ -1,4 +1,4 @@
-import { LocationService } from "./locationService";
+import { LocationService } from "./services/locationService";
 
 class App {
     private greeting: string = "learning typescript :)";

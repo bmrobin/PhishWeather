@@ -1,5 +1,5 @@
-import { Location } from "./location";
-import { Weather } from "./weather";
+import { Location } from "../models/location";
+import { Weather } from "../models/weather";
 
 export class LocationService {
 
