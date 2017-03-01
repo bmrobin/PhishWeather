@@ -66,5 +66,6 @@ task npmInstall(type: Exec) {
 }
 
 processResources.dependsOn 'npmInstall'
+processResources.dependsOn 'bower'
 bower.dependsOn 'npmInstall'
 

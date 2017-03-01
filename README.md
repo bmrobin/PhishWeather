@@ -1,11 +1,17 @@
 ## Retrieve weather info from wunderground.com for a given zip code
 
 #### Requirements
-* wunderground API key
-* gradle 2.x
-* java >= 1.7
+* java 1.8
 
-#### Installation (for IntelliJ IDEA)
-    $ ./gradlew clean build idea
+#### Installation
+    $ npm install -g grunt-cli bower
+    $ gradlew clean build
 
-Configure zip code and wunderground API key via command line arguments in IntelliJ run configurations. Then launch main method in ```WeatherAlert.java``` to execute the program.
+#### Usage
+Start the Java app in one terminal
+
+    $ gradlew bootRun
+
+Build and start the web app in another terminal
+
+    $ grunt
