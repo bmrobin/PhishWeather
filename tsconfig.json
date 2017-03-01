@@ -1,6 +1,5 @@
 {
   "compilerOptions": {
-    "baseUrl": "",
     "module": "commonjs",
     "moduleResolution": "node",
     "outDir": "src/main/webapp/dist",
