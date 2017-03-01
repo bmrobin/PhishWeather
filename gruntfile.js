@@ -7,6 +7,7 @@ module.exports = function (grunt) {
   require('load-grunt-tasks')(grunt);
   
   grunt.loadNpmTasks('grunt-ts');
+  grunt.loadNpmTasks('grunt-webpack');
 
   grunt.initConfig({
 
@@ -19,6 +20,39 @@ module.exports = function (grunt) {
       app: {
         // use options from our tsconfig.json 
         tsconfig: 'tsconfig.json'
+      }
+    },
+
+    // Bundle JS with a module loader - webpack
+    webpack: {
+      app: {
+        entry: {
+          bundle: "./src/main/webapp/scripts/app/app.ts"
+        },
+        output: {
+          path: "src/main/webapp/dist/",
+          filename: "[name].js",
+        },
+        module: {
+          rules: [
+            {
+              test: /\.ts?$/,
+              loader: 'ts-loader'
+            },
+            {
+              test: /\.js$/,
+              loader: 'source-map-loader'
+            }
+          ]
+        },
+        stats: {
+          modules: true,
+          reasons: true
+        },
+        resolve: {
+          extensions: ['.ts', '.js']
+        },
+        devtool: 'source-map'
       }
     },
 
@@ -51,6 +85,10 @@ module.exports = function (grunt) {
       tsconfig: {
         files: [ 'tsconfig.json'],
         tasks: [ 'backJackDoItAgain' ]
+      },
+      gruntfile: {
+        files: [ 'gruntfile.js' ],
+        tasks: [ 'backJackDoItAgain' ]
       }
     },
 
@@ -64,7 +102,7 @@ module.exports = function (grunt) {
       app: {
         files: {
           'src/main/webapp/index.html': [
-            'src/main/webapp/dist/**/*.js',
+            'src/main/webapp/dist/bundle.js',
             'src/main/webapp/assets/*.css'
           ],
         }
@@ -184,6 +222,7 @@ module.exports = function (grunt) {
   grunt.registerTask('backJackDoItAgain', [
     'clean',
     'ts',
+    'webpack',
     'wiredep',
     'injector'
   ]);
