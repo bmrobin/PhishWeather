@@ -8,6 +8,7 @@ module.exports = function (grunt) {
   
   grunt.loadNpmTasks('grunt-ts');
   grunt.loadNpmTasks('grunt-webpack');
+  grunt.loadNpmTasks('grunt-contrib-connect');
 
   grunt.initConfig({
 
@@ -208,6 +209,16 @@ module.exports = function (grunt) {
         ]
       },
       exclude: [ 'src/test/javascript/spec/e2e/*' ]
+    },
+
+    connect: {
+      server: {
+        options: {
+          port: 9000,
+          base: 'src/main/webapp',
+          livereload: true
+        }
+      }
     }
 
   });
@@ -229,6 +240,7 @@ module.exports = function (grunt) {
 
   grunt.registerTask('default', [
     'backJackDoItAgain',
+    'connect',
     'watch'
   ]);
 
