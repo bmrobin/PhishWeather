@@ -10,7 +10,7 @@ export class LocationService {
             url: "http://localhost:8080/" + loc.zipCode
         }).then(
             (data, textStatus, jqXHR) => {
-                window.console.log("here's your data: " + data);
+                window.console.log("here's your data: ", data);
             },
             (jqXHR, textStatus, error) => {
                 window.console.log(error);
