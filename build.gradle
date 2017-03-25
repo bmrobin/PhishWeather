@@ -49,7 +49,7 @@ bootRun {
 task docker(type: Docker) {
 	dependsOn bootRepackage
 
-	baseImage = 'biorad/oracle-java-8'
+	baseImage = 'library/openjdk:8u121-jdk'
 	tag = 'bmrobin/phish-weather-api'
 	tagVersion = 'latest'
 
