@@ -19,7 +19,9 @@ public class WeatherApiController {
     @Autowired
     private WeatherAlertService weatherAlertService;
 
-    @RequestMapping(value = "/{zipCode}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    @RequestMapping(value = "/{zipCode}",
+                    method = RequestMethod.GET,
+                    produces = MediaType.APPLICATION_JSON_VALUE)
     public Map<String, String> getWeather(@PathVariable("zipCode") String zipCode) {
         return weatherAlertService.getCurrentWeather(zipCode);
     }
