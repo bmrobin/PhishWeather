@@ -7,5 +7,7 @@ import java.util.Map;
  */
 public interface WeatherAlertService {
 
-    Map<String, String> getCurrentWeather(String zip);
+    Map<String, String> getCurrentWeatherForZipcode(String zip);
+
+    Map<String, String> getWeatherForDate(String dateString);
 }

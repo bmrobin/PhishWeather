@@ -19,10 +19,17 @@ public class WeatherApiController {
     @Autowired
     private WeatherAlertService weatherAlertService;
 
-    @RequestMapping(value = "/{zipCode}",
+    @RequestMapping(value = "/zip/{zipCode}",
                     method = RequestMethod.GET,
                     produces = MediaType.APPLICATION_JSON_VALUE)
-    public Map<String, String> getWeather(@PathVariable("zipCode") String zipCode) {
-        return weatherAlertService.getCurrentWeather(zipCode);
+    public Map<String, String> getWeatherByZip(@PathVariable("zipCode") String zipCode) {
+        return weatherAlertService.getCurrentWeatherForZipcode(zipCode);
+    }
+
+    @RequestMapping(value = "/date/{date}",
+                    method = RequestMethod.GET,
+                    produces = MediaType.APPLICATION_JSON_VALUE)
+    public Map<String, String> getWeatherByDate(@PathVariable("date") String date) {
+        return weatherAlertService.getWeatherForDate(date);
     }
 }
