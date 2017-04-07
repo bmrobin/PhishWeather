@@ -1,10 +1,8 @@
-import { LocationService } from "./services/locationService";
+import { UI } from "./ui/ui";
 
 class App {
-    private locationService = new LocationService();
-
     constructor() {
-        this.locationService.getLocationData("26209");
+        let uiBootStrap = new UI();
     }
 }
 

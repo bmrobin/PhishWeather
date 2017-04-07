@@ -19,25 +19,37 @@
 </head>
 <body>
 
-<table id="weather-conditions">
-    <th>Current Weather for <span id="location-id"></span></th>
-    <tr>
-        <td>Current conditions</td>
-        <td id="conditions-id"></td>
-    </tr>
-    <tr>
-        <td>Feels like (F)</td>
-        <td id="feels-like-id"></td>
-    </tr>
-    <tr>
-        <td>Temperature (F)</td>
-        <td id="temperature-id"></td>
-    </tr>
-    <tr>
-        <td>Time</td>
-        <td id="time-id"></td>
-    </tr>
-</table>
+<div style="padding-left: 10px; padding-top: 10px; padding-bottom: 10px">
+    <label for="zip-code">Zip Code</label>
+    <input type="text" id="zip-code-id" name="zip-code" />
+</div>
+
+<div style="padding-left: 10px; padding-top: 10px; padding-bottom: 10px;">
+    <label for="date">Date</label>
+    <input type="text" id="date-id" name="date" />
+</div>
+
+<div style="padding-left: 10px; padding-top: 10px; padding-bottom: 10px">
+    <table id="weather-conditions">
+        <th>Current Weather for <span id="location-id"></span></th>
+        <tr>
+            <td>Current conditions</td>
+            <td id="conditions-id"></td>
+        </tr>
+        <tr>
+            <td>Feels like (F)</td>
+            <td id="feels-like-id"></td>
+        </tr>
+        <tr>
+            <td>Temperature (F)</td>
+            <td id="temperature-id"></td>
+        </tr>
+        <tr>
+            <td>Time</td>
+            <td id="time-id"></td>
+        </tr>
+    </table>
+</div>
 
 <span id="error"></span>
 

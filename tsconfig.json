@@ -6,6 +6,10 @@
     "pretty": true,
     "sourceMap": true,
     "target": "es5",
+    "lib": [
+      "es6",
+      "dom"
+    ],
     "typeRoots": [
       "node_modules/@types"
     ]
