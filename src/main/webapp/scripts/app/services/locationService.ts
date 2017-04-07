@@ -3,8 +3,8 @@ import { Weather } from "../models/weather";
 
 export class LocationService {
 
-    public getLocationData(location: string): Promise<any> {
-        let loc = new Location(location);
+    public getZipCodeLocationData(zipCode: string): Promise<any> {
+        let loc = new Location(zipCode);
         let weatherData: Weather;
 
         return new Promise((resolve, reject) => {

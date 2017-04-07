@@ -7,16 +7,34 @@ export class UI {
 
     constructor() {
         this.locationService = new LocationService();
+
         $("#zip-code-id").on("input", (event) => {
-            // TODO - use `event.target.value` but currently typescript is erroring on it
-            this.locationService.getLocationData("22180")
-                .then((weatherData) => {
-                    this.displayLocationData(weatherData);
-                })
-                .catch((error) => {
-                    this.displayError();
-                });
+            this.zipCodeEventListener(<HTMLInputElement> event.target);
         });
+        $("#date-id").on("input", (event) => {
+            this.dateEventListener(<HTMLInputElement> event.target);
+        });
+    }
+
+    private zipCodeEventListener(element: HTMLInputElement): void {
+        this.locationService.getZipCodeLocationData(element.value)
+            .then((weatherData) => {
+                this.displayLocationData(weatherData);
+            })
+            .catch((error) => {
+                this.displayError();
+            });
+    }
+
+    // TODO - refactor to call the new locationService function
+    private dateEventListener(element: HTMLInputElement): void {
+        this.locationService.getZipCodeLocationData(element.value)
+            .then((weatherData) => {
+                this.displayLocationData(weatherData);
+            })
+            .catch((error) => {
+                this.displayError();
+            });
     }
 
     private displayError() {
