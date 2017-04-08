@@ -1,3 +1,4 @@
+import { appUrl } from "../common/constants";
 import { Location } from "../models/location";
 import { Weather } from "../models/weather";
 
@@ -10,7 +11,7 @@ export class LocationService {
         return new Promise((resolve, reject) => {
             $.ajax({
                 method: "GET",
-                url: "http://localhost:8080/zip/" + loc.zipCode
+                url: appUrl + "/zip/" + loc.zipCode
             }).then(
                 (data, textStatus, jqXHR) => {
                     weatherData = new Weather(data);
