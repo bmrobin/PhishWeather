@@ -1,8 +1,8 @@
-import { UI } from "./ui/ui";
+import { UIController } from "./ui/uiController";
 
 class App {
     constructor() {
-        let uiBootStrap = new UI();
+        let uiBootStrap = new UIController();
     }
 }
 
