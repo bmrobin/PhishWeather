@@ -15,8 +15,8 @@ export class UIController {
         $("#zip-code-id").on("change", (event) => {
             this.zipCodeEventListener(<HTMLInputElement> event.target);
         });
-        $("#date-id").on("change", (event) => {
-            this.phishShowEventListener(<HTMLInputElement> event.target);
+        $("#get-date-id").on("click", (event) => {
+            this.getDate();
         });
     }
 
@@ -30,19 +30,25 @@ export class UIController {
             });
     }
 
-    // TODO - refactor to call the new locationService function
-    private dateEventListener(element: HTMLInputElement): void {
-        this.locationService.getZipCodeLocationData(element.value)
-            .then((weatherData) => {
-                this.displayLocationData(weatherData);
-            })
-            .catch((error) => {
-                this.displayConnectionError();
-            });
+    private getDate() {
+        let showDate = this.constructDateFromSelectors();
+        if (showDate !== null) {
+            this.phishShowEventListener(showDate);
+        }
     }
 
-    private phishShowEventListener(element: HTMLInputElement): void {
-        let showDate: string = <string> element.value;
+    private constructDateFromSelectors() {
+        let year = $("#year-id").val();
+        let month = $("#month-id").val();
+        let day = $("#day-id").val();
+        if (year !== null && month !== null && day !== null) {
+            return year + "-" + month + "-" + day;
+        } else {
+            return null;
+        }
+    }
+
+    private phishShowEventListener(showDate: string): void {
         let showDateRegex: RegExp = new RegExp(/\d{4}-\d{2}-\d{2}/);
         if (showDateRegex.test(showDate)) {
             let year = showDate.substring(0, 4);
@@ -74,7 +80,7 @@ export class UIController {
         $("#show-result").hide();
     }
 
-    private  displayLocationData(locationData: Weather) {
+    private displayLocationData(locationData: Weather) {
         $("#error").hide();
         $("#weather-conditions").show();
         $("#location-id").text(locationData.location);
@@ -84,7 +90,7 @@ export class UIController {
         $("#time-id").text(locationData.time);
     }
 
-    private  displayShowData(showData: Show) {
+    private displayShowData(showData: Show) {
         $("#error").hide();
         $("#show-result").show();
         $("#show-date-id").text(showData.showdate);
