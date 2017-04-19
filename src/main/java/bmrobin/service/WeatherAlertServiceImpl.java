@@ -78,7 +78,7 @@ public class WeatherAlertServiceImpl implements WeatherAlertService {
 	}
 
 	@Override
-	public Map<String, String> getWeatherForDate(String dateString) {
+	public Map<String, String> getWeatherForDate(String dateString, String city, String state) {
 
 		String[] dates = new String[] {
 				dateString.substring(0, 4),
@@ -86,14 +86,12 @@ public class WeatherAlertServiceImpl implements WeatherAlertService {
 				dateString.substring(6, 8)
 		};
 
-		// TODO - currently using hardcoded location information
-
 		String weatherUrl = DATE_LOCATION_URL.replace("apiKey", "a165779ec885eb6c")
 				.replace("YYYY", dates[0])
 				.replace("MM", dates[1])
 				.replace("DD", dates[2])
-				.replace("state", "SC")
-				.replace("city", "Easley");
+				.replace("state", state)
+				.replace("city", city);
 
 		LOG.info("Getting weather from api: " + weatherUrl);
 

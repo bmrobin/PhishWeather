@@ -6,6 +6,7 @@ import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.Map;
@@ -26,10 +27,13 @@ public class WeatherApiController {
         return weatherAlertService.getCurrentWeatherForZipcode(zipCode);
     }
 
-    @RequestMapping(value = "/date/{date}",
+    @RequestMapping(value = "/date",
                     method = RequestMethod.GET,
                     produces = MediaType.APPLICATION_JSON_VALUE)
-    public Map<String, String> getWeatherByDate(@PathVariable("date") String date) {
-        return weatherAlertService.getWeatherForDate(date);
+    public Map<String, String> getWeatherByDate(
+        @RequestParam("date") String date,
+        @RequestParam("city") String city,
+        @RequestParam("state") String state) {
+        return weatherAlertService.getWeatherForDate(date, city, state);
     }
 }

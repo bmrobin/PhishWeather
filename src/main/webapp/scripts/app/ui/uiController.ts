@@ -12,22 +12,9 @@ export class UIController {
         this.locationService = new LocationService();
         this.phishApiService = new PhishApiService();
 
-        $("#zip-code-id").on("change", (event) => {
-            this.zipCodeEventListener(<HTMLInputElement> event.target);
-        });
         $("#get-date-id").on("click", (event) => {
             this.getDate();
         });
-    }
-
-    private zipCodeEventListener(element: HTMLInputElement): void {
-        this.locationService.getZipCodeLocationData(element.value)
-            .then((weatherData) => {
-                this.displayLocationData(weatherData);
-            })
-            .catch((error) => {
-                this.displayConnectionError();
-            });
     }
 
     private getDate() {
@@ -56,7 +43,12 @@ export class UIController {
             let day = showDate.substring(8, 10);
             this.phishApiService.lookupShowByDate(year, month, day)
             .then((data) => {
-                this.displayShowData(data);
+                let show: Show = new Show(data);
+                let location: string[] = show.location.split(", ");
+                this.locationService.getWeather(year + month + day, location[0], location[1]).then((result) => {
+                    this.displayShowData(show);
+                    this.displayLocationData(result);
+                });
             })
             .catch((error) => {
                 window.console.log(error);
@@ -83,11 +75,8 @@ export class UIController {
     private displayLocationData(locationData: Weather) {
         $("#error").hide();
         $("#weather-conditions").show();
-        $("#location-id").text(locationData.location);
-        $("#conditions-id").text(locationData.conditions);
-        $("#temperature-id").text(locationData.currentTempFahrenheit);
-        $("#feels-like-id").text(locationData.feelsLikeFahrenheit);
-        $("#time-id").text(locationData.time);
+        $("#temperature-id").text(locationData.averageTempFahrenheit);
+        $("#time-id").text(locationData.date);
     }
 
     private displayShowData(showData: Show) {

@@ -1,8 +1,10 @@
 export class Location {
 
-    public zipCode: string;
+    public city: string;
+    public state: string;
 
-    constructor(zipCode: string) {
-        this.zipCode = zipCode;
+    constructor(city: string, state: string) {
+        this.city = city;
+        this.state = state;
     }
 }

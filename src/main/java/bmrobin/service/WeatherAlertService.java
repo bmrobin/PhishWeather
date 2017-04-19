@@ -9,5 +9,5 @@ public interface WeatherAlertService {
 
     Map<String, String> getCurrentWeatherForZipcode(String zip);
 
-    Map<String, String> getWeatherForDate(String dateString);
+    Map<String, String> getWeatherForDate(String dateString, String city, String state);
 }
