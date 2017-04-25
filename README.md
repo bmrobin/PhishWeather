@@ -1,4 +1,5 @@
-## Retrieve weather info from wunderground.com for a given zip code
+## Retrieve weather info for a Phish show
+Enter a date of a past Phish show and see the weather information from that date
 
 #### Requirements
 * java 1.8
