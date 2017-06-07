@@ -1,8 +1,8 @@
 version: '2'
 services:
-  api:
+  weather-server:
     image: bmrobin/phish-weather-api
-    container_name: api
+    container_name: weather-server
     environment:
       - SPRING_PROFILES_ACTIVE=test
     ports:

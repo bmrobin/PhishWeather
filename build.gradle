@@ -62,7 +62,7 @@ task npmInstall(type: Exec) {
 	commandLine 'npm', 'install'
 }
 
-processResources.dependsOn 'npmInstall'
-processResources.dependsOn 'bower'
+war.dependsOn 'npmInstall'
+war.dependsOn 'bower'
 bower.dependsOn 'npmInstall'
 

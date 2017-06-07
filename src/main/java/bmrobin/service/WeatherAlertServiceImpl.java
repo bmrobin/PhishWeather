@@ -110,11 +110,6 @@ public class WeatherAlertServiceImpl implements WeatherAlertService {
 					.getJSONArray("dailysummary")
 					.getJSONObject(0);
 
-
-			// TODO - currently only retrieving `dailysummary`. need to also check for `observations` which has better info
-			// TODO - the problem with `observations` is it has hourly data all day long
-
-
 			Map<String, String> results = new HashMap<>();
 			results.put("averageTempFahrenheit", historicalWeatherData.get("meantempi").toString());
 			results.put("date", historicalWeatherData.getJSONObject("date").get("pretty").toString());
