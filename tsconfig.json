@@ -18,7 +18,6 @@
     "src/main/webapp/**/*.ts"
   ],
   "exclude": [
-    "src/main/webapp/bower_components",
     "src/main/webapp/dist"
   ]
 }
