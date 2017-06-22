@@ -1,3 +1,5 @@
+import * as $ from "jquery";
+
 export class Show {
 
     // only using explicitly defined properties

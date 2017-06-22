@@ -1,3 +1,4 @@
+import * as $ from "jquery";
 import { appUrl } from "../common/constants";
 import { Location } from "../models/location";
 import { Weather } from "../models/weather";
