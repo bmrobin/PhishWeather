@@ -32,8 +32,8 @@
       "src/main/webapp/scripts/app/models/**",
       "src/main/webapp/scripts/app/services/**",
       "src/main/webapp/scripts/app/ui/**",
-      "!src/dist/**",
-      "!src/main/webapp/scripts/app/services/ajaxRequest.ts"
+      "!src/main/webapp/scripts/app/services/ajaxRequest.ts",
+      "!src/main/webapp/scripts/app/ui/uiController.ts"
     ],
     "mapCoverage": true,
     "transform": {
