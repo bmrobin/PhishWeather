@@ -18,6 +18,7 @@
     "src/main/webapp/**/*.ts"
   ],
   "exclude": [
-    "src/main/webapp/dist"
+    "src/main/webapp/dist",
+    "src/main/webapp/scripts/app/**/__tests__/*spec.ts"
   ]
 }
