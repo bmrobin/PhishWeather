@@ -33,7 +33,6 @@ const ajaxPost = (url: string, queryString: string) => {
       url: url + phishApiKey + queryString
     }).then(
       (data, textStatus, jqXHR) => {
-        let show: Show = this.parseShowFromResponse(data);
         if (data.response.count === 1) {
           resolve(new Show(data.response.data[0]));
         } else {
