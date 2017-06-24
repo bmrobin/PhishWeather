@@ -45,7 +45,7 @@ bootRun {
 task docker(type: Docker) {
 	dependsOn bootRepackage
 
-	baseImage = 'library/openjdk:8u121-jdk'
+	baseImage = 'library/openjdk:8u131-jdk'
 	tag = 'bmrobin/phish-weather-api'
 	tagVersion = 'latest'
 
@@ -53,16 +53,3 @@ task docker(type: Docker) {
 	exposePort 8080
 	defaultCommand = [ '/usr/bin/java', '-jar', '/data/app.war' ]
 }
-
-task bower(type: Exec) {
-	commandLine 'bower', '--allow-root', 'install'
-}
-
-task npmInstall(type: Exec) {
-	commandLine 'npm', 'install'
-}
-
-war.dependsOn 'npmInstall'
-war.dependsOn 'bower'
-bower.dependsOn 'npmInstall'
-
