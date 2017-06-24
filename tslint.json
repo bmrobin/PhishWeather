@@ -8,6 +8,9 @@
         ],
         "trailing-comma": [
             false
+        ],
+        "object-literal-key-quotes": [
+            false
         ]
     }
 }

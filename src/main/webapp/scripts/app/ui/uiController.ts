@@ -1,3 +1,4 @@
+import * as $ from "jquery";
 import { Show } from "../models/show";
 import { Weather } from "../models/weather";
 import { LocationService } from "../services/locationService";

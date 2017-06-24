@@ -1,6 +1,7 @@
-import { appUrl } from "../common/constants";
+import * as $ from "jquery";
 import { Location } from "../models/location";
 import { Weather } from "../models/weather";
+import { ajaxGet } from "./ajaxRequest";
 
 export class LocationService {
 
@@ -9,26 +10,6 @@ export class LocationService {
         state = state.replace(/\s/g, "%20");
         let loc = new Location(city, state);
         let weatherData: Weather;
-
-        return new Promise((resolve, reject) => {
-            $.ajax({
-                data: {
-                    "city": city,
-                    "date": date,
-                    "state": state
-                },
-                method: "GET",
-                url: appUrl + "/date"
-            }).then(
-                (data, textStatus, jqXHR) => {
-                    weatherData = new Weather(data);
-                    resolve(weatherData);
-                },
-                (jqXHR, textStatus, error) => {
-                    window.console.error("An error occurred connecting to the weather service!");
-                    reject(null);
-                }
-            );
-        });
+        return ajaxGet({"city": city, "state": state, "date": date}, "/date");
     }
 }
