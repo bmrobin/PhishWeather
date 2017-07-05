@@ -1,4 +1,4 @@
-const ajaxGet = (requestData, endpoint) => {
+const ajaxGet = (requestData) => {
   return new Promise((resolve, reject) => {
     if (requestData.hasOwnProperty("city") && requestData["city"] !== "") {
       resolve("success");

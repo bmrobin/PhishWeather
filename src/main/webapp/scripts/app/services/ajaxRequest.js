@@ -1,6 +1,5 @@
 import * as $ from "jquery";
 import { appUrl, phishApiKey } from "../common/constants";
-import { Show } from "../models/show";
 
 const ajaxGet = (requestData, endpoint) => {
   return new Promise((resolve, reject) => {
@@ -32,15 +31,15 @@ const ajaxPost = (url, queryString) => {
       method: "POST",
       url: url + phishApiKey + queryString
     }).then(
-      (data, textStatus, jqXHR) => {
+      (data) => {
         if (data.response.count === 1) {
-          resolve(new Show(data.response.data[0]));
+          resolve(data.response.data[0]);
         } else {
           // either 0 or multiple shows were found
           resolve(null);
         }
       },
-      (jqXHR, textStatus, error) => {
+      () => {
         window.console.error("An error occurred retrieving data from api.phish.net!");
         reject(null);
       });
