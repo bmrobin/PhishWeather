@@ -2,11 +2,11 @@ const webpack = require("webpack");
 
 module.exports = {
     entry: {
-        bundle: "./src/main/webapp/scripts/app/app.js"
+        bundle: "./src/main/webapp/app.js"
     },
     output: {
-        path: __dirname + "/src/dist/",
-        filename: "[name].js",
+        path: __dirname + "/build",
+        filename: "[name].[hash:8].js",
     },
     module: {
         rules: [

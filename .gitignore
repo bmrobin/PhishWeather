@@ -6,9 +6,5 @@
 *.ipr
 *.iws
 /.tmp
-.tscache
-.baseDir.ts
-bower_components
 /node_modules
-dist
 coverage
