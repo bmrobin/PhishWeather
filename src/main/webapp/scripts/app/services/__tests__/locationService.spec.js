@@ -5,7 +5,7 @@ jest.mock("../ajaxRequest");
 
 describe("Location Service", () => {
 
-  let locationService: LocationService = new LocationService();
+  let locationService = new LocationService();
 
   test("should get weather for a given location", () => {
     return locationService.getWeather("2017-06-23", "Raleigh", "NC").then((result) => {

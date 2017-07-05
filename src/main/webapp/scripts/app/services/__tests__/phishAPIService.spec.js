@@ -6,7 +6,7 @@ jest.mock("../ajaxRequest");
 
 describe("Phish API Service", () => {
 
-  let phishAPIService: PhishApiService = new PhishApiService();
+  let phishAPIService = new PhishApiService();
 
   test("should retrieve show information for a date", () => {
     return phishAPIService.lookupShowByDate("1998", "08", "09").then((data) => {

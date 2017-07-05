@@ -2,7 +2,7 @@ import * as $ from "jquery";
 import { appUrl, phishApiKey } from "../common/constants";
 import { Show } from "../models/show";
 
-const ajaxGet = (requestData: Object, endpoint: string) => {
+const ajaxGet = (requestData, endpoint) => {
   return new Promise((resolve, reject) => {
     $.ajax({
       data: requestData,
@@ -22,7 +22,7 @@ const ajaxGet = (requestData: Object, endpoint: string) => {
   });
 };
 
-const ajaxPost = (url: string, queryString: string) => {
+const ajaxPost = (url, queryString) => {
   return new Promise((resolve, reject) => {
     $.ajax({
       crossDomain: true,

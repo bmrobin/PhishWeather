@@ -5,11 +5,11 @@ import { ajaxGet } from "./ajaxRequest";
 
 export class LocationService {
 
-    public getWeather(date: string, city: string, state: string): Promise<any> {
+    public getWeather(date, city, state) {
         city = city.replace(/\s/g, "%20");
         state = state.replace(/\s/g, "%20");
         let loc = new Location(city, state);
-        let weatherData: Weather;
+        let weatherData;
         return ajaxGet({"city": city, "state": state, "date": date}, "/date");
     }
 }

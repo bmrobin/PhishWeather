@@ -1,4 +1,4 @@
-const ajaxGet = (requestData: Object, endpoint: string) => {
+const ajaxGet = (requestData, endpoint) => {
   return new Promise((resolve, reject) => {
     if (requestData.hasOwnProperty("city") && requestData["city"] !== "") {
       resolve("success");
@@ -8,7 +8,7 @@ const ajaxGet = (requestData: Object, endpoint: string) => {
   });
 };
 
-const ajaxPost = (url: string, query: string) => {
+const ajaxPost = (url, query) => {
   return new Promise((resolve, reject) => {
     if (query !== "&day=&month=&year=") {
       resolve("success");

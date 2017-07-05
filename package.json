@@ -7,24 +7,29 @@
     "node_modules"
   ],
   "scripts": {
-    "build": "webpack --colors --progress --display-error-details --display-cached",
+    "start": "webpack-dev-server --config config/webpack.config.dev.js --progress --colors",
+    "build": "webpack --config config/webpack.config.prod.js --progress --colors",
     "test": "jest --coverage"
   },
-  "devDependencies": {
-    "@types/jest": "^19.2.3",
-    "@types/jquery": "^2.0.40",
-    "@types/node": "^7.0.5",
+  "dependencies": {
     "bootstrap": "3.3.7",
+    "jquery": "3.1.0",
+    "react": "^15.6.1",
+    "react-dom": "^15.6.1"
+  },
+  "devDependencies": {
+    "babel-core": "^6.25.0",
+    "babel-loader": "^7.1.1",
+    "babel-preset-env": "^1.6.0",
+    "babel-preset-react": "^6.24.1",
+    "eslint": "^4.1.1",
+    "eslint-loader": "^1.8.0",
+    "eslint-plugin-react": "^7.1.0",
     "jasmine-core": "2.5.0",
     "jest": "^20.0.3",
-    "jquery": "3.1.0",
-    "jshint-stylish": "^2.1.0",
     "source-map-loader": "^0.1.6",
-    "tslint": "^4.4.2",
-    "ts-jest": "^20.0.3",
-    "ts-loader": "^2.0.1",
-    "typescript": "^2.1.6",
-    "webpack": "^2.2.1"
+    "webpack": "^2.2.1",
+    "webpack-dev-server": "^2.5.0"
   },
   "jest": {
     "collectCoverage": true,

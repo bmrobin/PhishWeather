@@ -12,7 +12,7 @@ describe("Models: Show", () => {
       venue: "Virginia Beach Amphitheater",
       venueid: 407
     };
-    let show: Show = new Show(jsonData);
+    let show = new Show(jsonData);
     expect(show).not.toBe(null);
     expect(show.link).toBe("link");
     expect(show.location).toBe("Virginia Beach, VA, USA");
