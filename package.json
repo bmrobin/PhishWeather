@@ -7,8 +7,8 @@
     "node_modules"
   ],
   "scripts": {
-    "start": "webpack-dev-server --config config/webpack.config.dev.js --progress --colors",
-    "build": "webpack --config config/webpack.config.prod.js --progress --colors",
+    "start": "webpack-dev-server --config webpack.config.js --progress --colors",
+    "build": "webpack --config webpack.config.js --progress --colors",
     "test": "jest --coverage"
   },
   "dependencies": {
@@ -26,6 +26,7 @@
     "eslint": "^4.1.1",
     "eslint-loader": "^1.8.0",
     "eslint-plugin-react": "^7.1.0",
+    "html-webpack-plugin": "^2.29.0",
     "jasmine-core": "2.5.0",
     "jest": "^20.0.3",
     "source-map-loader": "^0.1.6",
