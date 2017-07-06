@@ -6,17 +6,32 @@ import './Date.css';
 
 export class Date extends React.Component {
 
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
+
+    this.dayChangeEvent = this.dayChangeEvent.bind(this);
+    this.monthChangeEvent = this.monthChangeEvent.bind(this);
+    this.yearChangeEvent = this.yearChangeEvent.bind(this);
+  }
+
+  dayChangeEvent(event) {
+    this.props.dateChange('day', event.target.value);
+  }
+
+  monthChangeEvent(event) {
+    this.props.dateChange('month', event.target.value);
+  }
+
+  yearChangeEvent(event) {
+    this.props.dateChange('year', event.target.value);
   }
 
   render() {
     return (
       <div className="date">
-        <Day day="null" handleChange="" />
-        <Month month="null" handleChange="" />
-        <Year year="null" handleChange="" />
-        <button id="get-date-id" type="button">Lookup Date</button>
+        <Month month={this.props.month} handleChange={this.monthChangeEvent} />
+        <Day day={this.props.day} handleChange={this.dayChangeEvent} />
+        <Year year={this.props.year} handleChange={this.yearChangeEvent} />
       </div>
     );
   }

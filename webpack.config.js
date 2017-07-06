@@ -1,5 +1,6 @@
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+// require('./node_modules/bootstrap/dist/css/bootstrap');
 
 module.exports = {
 	entry: {

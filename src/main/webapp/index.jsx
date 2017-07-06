@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Date } from './ui/date/Date';
+import { App } from './ui/App';
 
 ReactDOM.render(
-  <Date />, document.getElementById('app')
+  <App />, document.getElementById('app')
 );
