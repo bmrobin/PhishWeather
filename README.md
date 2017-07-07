@@ -7,7 +7,7 @@ Enter a date of a past Phish show and see the weather information from that date
 * Optional: docker and docker-compose
 
 #### Installation
-    $ npm install -g grunt-cli bower
+    $ npm install
     $ gradlew clean build
 
 #### Usage
@@ -21,7 +21,7 @@ Or to start the Java app in a Docker container
 
 Build and start the web app in another terminal
 
-    $ grunt
+    $ npm start
 
 Access the web app at http://localhost:9000
 
