@@ -1,5 +1,6 @@
 package bmrobin.service;
 
+import bmrobin.web.error.NotFoundException;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -78,7 +79,7 @@ public class WeatherAlertServiceImpl implements WeatherAlertService {
 	}
 
 	@Override
-	public Map<String, String> getWeatherForDate(String dateString, String city, String state) {
+	public Map<String, String> getWeatherForDate(String dateString, String city, String state) throws NotFoundException {
 
 		String[] dates = new String[] {
 				dateString.substring(0, 4),
@@ -117,8 +118,7 @@ public class WeatherAlertServiceImpl implements WeatherAlertService {
 			return results;
 		} catch (Exception e) {
 			LOG.severe(e.getMessage());
+			throw new NotFoundException();
 		}
-
-		return null;
 	}
 }

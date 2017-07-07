@@ -1,6 +1,7 @@
 package bmrobin.web;
 
 import bmrobin.service.WeatherAlertService;
+import bmrobin.web.error.NotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -33,7 +34,7 @@ public class WeatherApiController {
     public Map<String, String> getWeatherByDate(
         @RequestParam("date") String date,
         @RequestParam("city") String city,
-        @RequestParam("state") String state) {
+        @RequestParam("state") String state) throws NotFoundException {
         return weatherAlertService.getWeatherForDate(date, city, state);
     }
 }

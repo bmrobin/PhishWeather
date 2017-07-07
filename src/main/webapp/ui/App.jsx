@@ -1,7 +1,10 @@
 import React from 'react';
 import Date from './date';
 import { Show } from './show/show';
-import { findPhishShow } from '../services/serviceHandler';
+import { Weather } from './weather/weather';
+import { Error } from './error/error';
+import { getWeather } from '../services/locationService';
+import { lookupShowByDate } from '../services/phishAPIService';
 
 export class App extends React.Component {
   
@@ -17,7 +20,7 @@ export class App extends React.Component {
       show: undefined,
       weather: undefined
     };
-    
+
     this.dateChangeEvent = this.dateChangeEvent.bind(this);
     this.findShow = this.findShow.bind(this);
   }
@@ -41,12 +44,31 @@ export class App extends React.Component {
   }
 
   findShow() {
-    let showResult;
-    findPhishShow(this.state.date).then((data) => {
+    let showResult, weatherResult;
+    lookupShowByDate(this.state.date).then((data) => {
       showResult = data;
       this.setState({
-        show: showResult
-      })
+        show: showResult,
+        error: undefined
+      });
+      getWeather(this.state.date, this.state.show.location)
+        .then((data) => {
+          weatherResult = data;
+          this.setState({
+            weather: weatherResult
+          });
+        })
+        .catch((error) => {
+          let errorMessage;
+          if (error.status === 0) {
+            errorMessage = "An error occurred connecting with the backend service!";
+          } else if (error.status === 404) {
+            errorMessage = 'Weather for the Phish show was not found!';
+          }
+          this.setState({
+            error: errorMessage
+          });
+        });
     });
   }
 
@@ -61,6 +83,14 @@ export class App extends React.Component {
         {
           this.state.show &&
           <Show show={this.state.show} /> 
+        }
+        {
+          this.state.weather &&
+          <Weather weather={this.state.weather} />
+        }
+        {
+          this.state.error &&
+          <Error error={this.state.error} />
         }
       </div>
     );

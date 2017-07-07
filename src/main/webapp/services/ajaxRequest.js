@@ -14,9 +14,12 @@ const ajaxGet = (requestData, endpoint) => {
       (data) => {
         resolve(data);
       },
-      () => {
-        window.console.error("An error occurred connecting to " + appUrl + endpoint);
-        reject(null);
+      (error) => {
+        try {
+          reject(JSON.parse(error.responseText));
+        } catch(e) {
+          reject(error);  
+        }
       });
   });
 };
