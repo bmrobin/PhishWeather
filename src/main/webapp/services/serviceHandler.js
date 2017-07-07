@@ -1,5 +1,5 @@
-import { PhishApiService } from '../../services/phishAPIService';
-import { LocationService } from '../../services/locationService';
+import { PhishApiService } from './phishAPIService';
+import { LocationService } from './locationService';
 
 const phishApiService = new PhishApiService();
 const locationService = new LocationService();

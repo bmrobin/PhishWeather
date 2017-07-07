@@ -1,6 +1,5 @@
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-// require('./node_modules/bootstrap/dist/css/bootstrap');
 
 module.exports = {
 	entry: {
@@ -32,10 +31,7 @@ module.exports = {
 			},
 			{
 				test: /\.css$/,
-				use: [
-					{ loader: "style-loader" },
-					{ loader: "css-loader" }
-				],
+				loader: 'style-loader!css-loader'
 			}
 		]
 	},

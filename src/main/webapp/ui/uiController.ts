@@ -72,21 +72,4 @@ export class UIController {
         $("#weather-conditions").hide();
         $("#show-result").hide();
     }
-
-    private displayLocationData(locationData: Weather) {
-        $("#error").hide();
-        $("#weather-conditions").show();
-        $("#temperature-id").text(locationData.averageTempFahrenheit);
-        $("#time-id").text(locationData.date);
-    }
-
-    private displayShowData(showData: Show) {
-        $("#error").hide();
-        $("#show-result").show();
-        $("#show-date-id").text(showData.showdate);
-        $("#show-location-id").text(showData.location);
-        $("#show-venue-id").text(showData.venue);
-        $("#show-notes-id").text(showData.setlistnotes);
-        $("#pnet-link-id").text(showData.link);
-    }
 }

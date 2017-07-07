@@ -1,7 +1,7 @@
 import React from 'react';
 import Date from './date';
 import { Show } from './show/show';
-import { findPhishShow } from './show/showHandler';
+import { findPhishShow } from '../services/serviceHandler';
 
 export class App extends React.Component {
   
