@@ -3,7 +3,7 @@ import Date from './date';
 import { Show } from './show/show';
 import { Weather } from './weather/weather';
 import { Error } from './error/error';
-import { getWeather } from '../services/locationService';
+import { getWeather } from '../services/weatherService';
 import { lookupShowByDate } from '../services/phishAPIService';
 
 export class App extends React.Component {
