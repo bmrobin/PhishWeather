@@ -1,0 +1,10 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Error component should render the error component 1`] = `
+<span
+  className="error"
+  id="error-id"
+>
+  an error occurred!
+</span>
+`;

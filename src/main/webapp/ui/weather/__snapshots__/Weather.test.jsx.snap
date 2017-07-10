@@ -1,0 +1,34 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Weather component should render the weather component 1`] = `
+<table>
+  <th>
+    Weather for Show 
+    <span
+      id="location-id"
+    />
+  </th>
+  <tbody>
+    <tr>
+      <td>
+        Temperature (F)
+      </td>
+      <td
+        id="temperature-id"
+      >
+        60
+      </td>
+    </tr>
+    <tr>
+      <td>
+        Date
+      </td>
+      <td
+        id="time-id"
+      >
+        2017-07-10
+      </td>
+    </tr>
+  </tbody>
+</table>
+`;

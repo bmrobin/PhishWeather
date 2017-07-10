@@ -1,0 +1,96 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Show component should render the show component 1`] = `
+<div
+  className="show"
+>
+  <div>
+    Phish show on 
+    <span
+      id="show-date-id"
+    >
+      1998-08-09
+    </span>
+  </div>
+  <table>
+    <tbody>
+      <tr>
+        <td
+          className="show-result-title"
+        >
+          <span>
+            <strong>
+              Venue
+            </strong>
+          </span>
+        </td>
+        <td>
+          <span
+            id="show-venue-id"
+          >
+            Virginia Beach Amphitheater
+          </span>
+        </td>
+      </tr>
+      <tr>
+        <td
+          className="show-result-title"
+        >
+          <span>
+            <strong>
+              Location
+            </strong>
+          </span>
+        </td>
+        <td>
+          <span
+            id="show-location-id"
+          >
+            Virginia Beach, VA
+          </span>
+        </td>
+      </tr>
+      <tr>
+        <td
+          className="show-result-title"
+        >
+          <span>
+            <strong>
+              Show Notes
+            </strong>
+          </span>
+        </td>
+        <td>
+          <span
+            dangerouslySetInnerHTML={
+              Object {
+                "__html": "show notes here",
+              }
+            }
+            id="show-notes-id"
+          />
+        </td>
+      </tr>
+      <tr>
+        <td
+          className="show-result-title"
+        >
+          <span>
+            <strong>
+              phish.net Link
+            </strong>
+          </span>
+        </td>
+        <td>
+          <a
+            href="http://phish.net"
+            target="blank"
+          >
+            1998-08-09
+          </a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+`;

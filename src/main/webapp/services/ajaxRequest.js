@@ -52,8 +52,7 @@ const ajaxPost = (url, queryString) => {
         }
       })
       .catch(() => {
-        window.console.error("An error occurred retrieving data from api.phish.net!");
-        reject(null);
+        reject("An error occurred retrieving data from api.phish.net!");
       });
   });
 };

@@ -48,7 +48,7 @@ describe("AJAX requests", () => {
     test("should handle error if the request fails", () => {
       return ajaxPost('http://url.com', '')
         .catch((error) => {
-          expect(error).toBe(null);
+          expect(error).toBe("An error occurred retrieving data from api.phish.net!");
         });
     });
 

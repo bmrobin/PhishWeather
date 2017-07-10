@@ -39,10 +39,11 @@
     "webpack-dev-server": "^2.5.0"
   },
   "jest": {
+    "cache": false,
     "collectCoverage": true,
     "collectCoverageFrom": [
-      "src/main/webapp/services/**",
-      "src/main/webapp/ui/**"
+      "src/main/webapp/**",
+      "!src/main/webapp/**/__snapshots__/**"
     ],
     "mapCoverage": true,
     "moduleFileExtensions": [

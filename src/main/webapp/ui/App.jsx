@@ -1,8 +1,8 @@
 import React from 'react';
 import Date from './date';
-import { Show } from './show/show';
-import { Weather } from './weather/weather';
-import { Error } from './error/error';
+import { Show } from './show/Show';
+import { Weather } from './weather/Weather';
+import { Error } from './error/Error';
 import { getWeather } from '../services/weatherService';
 import { lookupShowByDate } from '../services/phishAPIService';
 
@@ -45,31 +45,36 @@ export class App extends React.Component {
 
   findShow() {
     let showResult, weatherResult;
-    lookupShowByDate(this.state.date).then((data) => {
-      showResult = data;
-      this.setState({
-        show: showResult,
-        error: undefined
-      });
-      getWeather(this.state.date, this.state.show.location)
-        .then((data) => {
-          weatherResult = data;
-          this.setState({
-            weather: weatherResult
-          });
-        })
-        .catch((error) => {
-          let errorMessage;
-          if (error.status === 0) {
-            errorMessage = "An error occurred connecting with the backend service!";
-          } else if (error.status === 404) {
-            errorMessage = 'Weather for the Phish show was not found!';
-          }
-          this.setState({
-            error: errorMessage
-          });
+    lookupShowByDate(this.state.date)
+      .then((data) => {
+        showResult = data;
+        this.setState({
+          show: showResult,
+          error: undefined
         });
-    });
+        getWeather(this.state.date, this.state.show.location)
+          .then((data) => {
+            weatherResult = data;
+            this.setState({
+              weather: weatherResult
+            });
+          })
+          .catch((error) => {
+            let errorMessage;
+            if (error.status === 0) {
+              errorMessage = "An error occurred connecting with the backend service!";
+            } else if (error.status === 404) {
+              errorMessage = 'Weather for the Phish show was not found!';
+            }
+            this.setState({
+              error: errorMessage
+            });
+          });
+      }).catch((err) => {
+        this.setState({
+          error: err
+        });
+      });
   }
 
   render() {

@@ -15,15 +15,15 @@ export class Date extends React.Component {
   }
 
   dayChangeEvent(event) {
-    this.props.dateChange('day', event.target.value);
+    return this.props.dateChange('day', event.target.value);
   }
 
   monthChangeEvent(event) {
-    this.props.dateChange('month', event.target.value);
+    return this.props.dateChange('month', event.target.value);
   }
 
   yearChangeEvent(event) {
-    this.props.dateChange('year', event.target.value);
+    return this.props.dateChange('year', event.target.value);
   }
 
   render() {
