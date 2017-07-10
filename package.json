@@ -20,6 +20,7 @@
     "babel-core": "^6.25.0",
     "babel-jest": "^20.0.3",
     "babel-loader": "^7.1.1",
+    "babel-plugin-transform-es2015-modules-commonjs": "^6.24.1",
     "babel-preset-env": "^1.6.0",
     "babel-preset-react": "^6.24.1",
     "css-loader": "^0.28.4",
@@ -27,8 +28,11 @@
     "eslint-loader": "^1.8.0",
     "eslint-plugin-react": "^7.1.0",
     "html-webpack-plugin": "^2.29.0",
+    "identity-obj-proxy": "^3.0.0",
     "jasmine-core": "2.5.0",
     "jest": "^20.0.3",
+    "react-test-renderer": "^15.6.1",
+    "regenerator-runtime": "^0.10.5",
     "source-map-loader": "^0.1.6",
     "style-loader": "^0.18.2",
     "webpack": "^2.2.1",
@@ -41,14 +45,16 @@
       "src/main/webapp/ui/**"
     ],
     "mapCoverage": true,
-    "testRegex": "(/__tests__/.*|\\.(test|spec))\\.(js?)$",
-    "transform": {
-      "^.+\\.js$": "babel-jest"
-    },
     "moduleFileExtensions": [
       "jsx",
       "js"
-    ]
+    ],
+    "moduleNameMapper": {
+      "\\.(css|less)$": "identity-obj-proxy"
+    },
+    "transform": {
+      "^.+\\.jsx?$": "babel-jest"
+    }
   },
   "engines": {
     "node": "^4.3"
