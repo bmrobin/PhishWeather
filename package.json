@@ -45,6 +45,7 @@
       "src/main/webapp/**",
       "!src/main/webapp/**/__snapshots__/**"
     ],
+    "coverageReporters": ["lcov", "cobertura"],
     "mapCoverage": true,
     "moduleFileExtensions": [
       "jsx",
