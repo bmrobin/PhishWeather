@@ -3,8 +3,10 @@ import React from 'react';
 export function Weather(props) {
   return (
     <table>
-      <th>Weather for Show <span id="location-id"></span></th>
       <tbody>
+        <tr>
+          <th>Weather for Show <span id="location-id"></span></th>
+        </tr>
         <tr>
           <td>Temperature (F)</td>
           <td id="temperature-id">{props.weather.averageTempFahrenheit}</td>

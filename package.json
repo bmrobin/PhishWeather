@@ -24,6 +24,7 @@
     "babel-preset-env": "^1.6.0",
     "babel-preset-react": "^6.24.1",
     "css-loader": "^0.28.4",
+    "enzyme": "^2.9.1",
     "eslint": "^4.1.1",
     "eslint-loader": "^1.8.0",
     "eslint-plugin-react": "^7.1.0",
@@ -45,7 +46,10 @@
       "src/main/webapp/**",
       "!src/main/webapp/**/__snapshots__/**"
     ],
-    "coverageReporters": ["lcov", "cobertura"],
+    "coverageReporters": [
+      "lcov",
+      "cobertura"
+    ],
     "mapCoverage": true,
     "moduleFileExtensions": [
       "jsx",

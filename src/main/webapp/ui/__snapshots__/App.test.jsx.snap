@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`App component rendered app should match snapshot 1`] = `
+exports[`App component should initially only render date component 1`] = `
 <div>
   <div
     className="date"

@@ -2,13 +2,15 @@
 
 exports[`Weather component should render the weather component 1`] = `
 <table>
-  <th>
-    Weather for Show 
-    <span
-      id="location-id"
-    />
-  </th>
   <tbody>
+    <tr>
+      <th>
+        Weather for Show 
+        <span
+          id="location-id"
+        />
+      </th>
+    </tr>
     <tr>
       <td>
         Temperature (F)
